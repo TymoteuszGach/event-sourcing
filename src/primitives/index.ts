@@ -13,12 +13,12 @@ export interface Failure {
 
 export type Result<R = never> = Success<R> | Failure;
 
-export function success<Result>(value: Result): Success<Result> {
+export function success<R>(value: R): Success<R> {
   return {
     isError: false,
     value: value,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    orElse: (newMessage: string): Success<Result> => {
+    orElse: (newMessage: string): Success<R> => {
       return success(value)
     }
   };
