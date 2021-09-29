@@ -4,6 +4,9 @@
   "repository": "git@github.com:TymoteuszGach/event-sourcing.git",
   "license": "MIT",
   "private": false,
+  "files": [
+    "/modules"
+  ],
   "devDependencies": {
     "@tsconfig/node14": "^1.0.1",
     "@types/node": "^16.9.6",

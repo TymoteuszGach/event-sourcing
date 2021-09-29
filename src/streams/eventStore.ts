@@ -1,5 +1,5 @@
-import {Event} from "../events";
-import {Result} from "../primitives";
+import {Event} from "../events"
+import {Result} from "../primitives"
 
 export interface StreamAppender<StreamEvent extends Event> {
   append: (streamName: string, event: StreamEvent) => Promise<Result<boolean>>

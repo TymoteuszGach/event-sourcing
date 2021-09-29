@@ -7,9 +7,13 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "ignorePatterns": [
-    "dist/**/*"
+    "modules/**/*"
   ],
   "rules": {
+    "semi": [
+      "error",
+      "never"
+    ],
     "camelcase": "error",
     "@typescript-eslint/indent": [
       "error",

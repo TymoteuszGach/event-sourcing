@@ -1,8 +1,8 @@
-import {Aggregate} from "../aggregates";
-import {Event} from "../events";
-import {Result} from "../primitives";
-import {aggregate} from "./aggregate";
-import {EventStore} from "./eventStore";
+import {Aggregate} from "../aggregates"
+import {Event} from "../events"
+import {Result} from "../primitives"
+import {aggregate} from "./aggregate"
+import {EventStore} from "./eventStore"
 
 export type AggregateUpdater<StreamAggregate extends Aggregate, StreamEvent extends Event> = {
   update: (aggregate: StreamAggregate | Record<string, never>) => Result<StreamEvent>
@@ -24,7 +24,7 @@ export async function getAndUpdate<StreamAggregate extends Aggregate, StreamEven
     return aggregateUserResult.wrap("cannot build aggregate from events")
   }
 
-  const updateResult = aggregateUpdater.update(aggregateUserResult.value);
+  const updateResult = aggregateUpdater.update(aggregateUserResult.value)
   if (updateResult.isError) {
     return updateResult.wrap("cannot update state")
   }

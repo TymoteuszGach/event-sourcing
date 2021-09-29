@@ -1,6 +1,6 @@
-import {Event} from "../events";
-import {StreamReader} from "./eventStore";
-import {failure, Result} from "../primitives";
+import {Event} from "../events"
+import {StreamReader} from "./eventStore"
+import {failure, Result} from "../primitives"
 
 export async function read<StreamEvent extends Event>(
   streamReader: StreamReader<StreamEvent>,

@@ -4,7 +4,7 @@ export type Command<Type extends string = string,
     type: Readonly<Type>
     data: Readonly<Data>
     metadata?: Readonly<Metadata>
-  };
+  }
 
 export function isCommand<Type extends string = string,
   Data extends Record<string, unknown> = Record<string, unknown>,

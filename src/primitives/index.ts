@@ -11,7 +11,7 @@ export interface Failure {
   wrap: (newMessage: string) => Failure
 }
 
-export type Result<R = never> = Success<R> | Failure;
+export type Result<R = never> = Success<R> | Failure
 
 export function success<R>(value: R): Success<R> {
   return {
@@ -21,13 +21,13 @@ export function success<R>(value: R): Success<R> {
     orElse: (newMessage: string): Success<R> => {
       return success(value)
     }
-  };
+  }
 }
 
 export function failure(message: string): Failure {
   const wrapMessage = (newMessage: string): Failure => {
     return failure(`${newMessage}: ${message}`)
-  };
+  }
 
   return {
     isError: true,

@@ -1,6 +1,6 @@
-import {Event} from "../events";
-import {failure, Result} from "../primitives";
-import {StreamAppender} from "./eventStore";
+import {Event} from "../events"
+import {failure, Result} from "../primitives"
+import {StreamAppender} from "./eventStore"
 
 export async function append<Command, StreamEvent extends Event>(
   handle: (command: Command) => Result<StreamEvent>,
