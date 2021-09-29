@@ -14,7 +14,6 @@ export function isEvent<Type extends string = string,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/explicit-module-boundary-types
   Metadata extends Record<string, unknown> = Record<string, unknown>>(event: any): event is Event<Type, Version, Data, Metadata> {
   return typeof event.type !== "undefined"
-    && typeof event.sequence === "bigint"
     && typeof event.version !== "undefined"
     && typeof event.data !== "undefined"
 }

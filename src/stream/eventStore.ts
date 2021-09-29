@@ -8,3 +8,5 @@ export interface StreamAppender<StreamEvent extends Event> {
 export interface StreamReader<StreamEvent extends Event> {
   read: (streamName: string) => Promise<Result<Generator<StreamEvent>>>
 }
+
+export type EventStore<StreamEvent extends Event> = StreamAppender<StreamEvent> & StreamReader<StreamEvent>

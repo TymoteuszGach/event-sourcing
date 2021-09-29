@@ -1,11 +1,11 @@
-import {Event} from "../events";
-import {failure, Result, success} from "../primitives";
-import {Aggregate, isAggregate} from "../aggregates";
+import {Event} from "../events"
+import {Result, success} from "../primitives"
+import {Aggregate, isAggregate} from "../aggregates"
 
 export async function aggregate<StreamAggregate extends Aggregate, StreamEvent extends Event>(
   eventsGenerator: Generator<StreamEvent>,
   aggregator: (currentState: StreamAggregate | Record<string, never>, event: StreamEvent) => Result<StreamAggregate>
-): Promise<Result<StreamAggregate>> {
+): Promise<Result<StreamAggregate | Record<string, never>>> {
   let state: StreamAggregate | Record<string, never> = {}
   for (const event of eventsGenerator) {
     const result = aggregator(state, event)
@@ -17,5 +17,5 @@ export async function aggregate<StreamAggregate extends Aggregate, StreamEvent e
   if (isAggregate(state)) {
     return success(state)
   }
-  return failure("empty aggregate state")
+  return success({})
 }
