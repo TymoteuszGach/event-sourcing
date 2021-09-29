@@ -104,7 +104,7 @@ dist
 .tern-port
 
 # Build folder
-tsc/
+dist/
 
 # IntelliJ IDEA project files
 .idea/
