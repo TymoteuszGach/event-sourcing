@@ -1,10 +1,10 @@
 import {Event} from "../events";
 import {failure, Result} from "../primitives";
-import {AppendToStream} from "./eventStore";
+import {StreamAppender} from "./eventStore";
 
 export async function append<Command, StreamEvent extends Event>(
   handle: (command: Command) => Result<StreamEvent>,
-  appendToStream: AppendToStream<StreamEvent>,
+  streamAppender: StreamAppender<StreamEvent>,
   streamName: string,
   command: Command
 ): Promise<Result<boolean>> {
@@ -14,7 +14,7 @@ export async function append<Command, StreamEvent extends Event>(
       return handleResult.wrap("cannot handle command")
     }
     const newEvent = handleResult.value
-    return appendToStream(streamName, newEvent)
+    return streamAppender.append(streamName, newEvent)
       .then(res => res.orElse("cannot append event to stream"))
   } catch (error) {
     if (error instanceof Error) {
